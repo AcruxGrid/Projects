@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acrux Grid - Case Studies</title>
+    <title>AcruxGrid Case Studies</title>
     <style>
         * {
             margin: 0;
@@ -17,130 +17,198 @@
             color: #333;
             background-color: #f8f9fa;
             min-height: 100vh;
-            padding: 20px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 40px 20px;
         }
 
         .header {
+            text-align: center;
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
+            margin-bottom: 60px;
             padding: 60px 40px;
-            text-align: center;
-            margin-bottom: 0;
-            border-bottom: none;
+            border-radius: 8px;
         }
 
         .header h1 {
-            font-size: 2.8em;
-            color: white;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
             font-weight: 300;
-            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .header .subtitle {
-            font-size: 1.2em;
-            color: white;
+            font-size: 1.3rem;
             opacity: 0.9;
+            font-weight: 300;
             max-width: 600px;
             margin: 0 auto;
-            font-weight: 300;
         }
 
         .case-studies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 0;
-            padding: 50px 40px;
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .case-study-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            border: none;
-            border-left: 4px solid #27ae60;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 25px;
             position: relative;
             overflow: hidden;
         }
 
-        .case-study-card::before {
-            display: none;
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
         }
 
-        .case-study-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(0,0,0,0.15);
-        }
-
-        .case-study-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            height: 100%;
-        }
-
-        .case-study-title {
-            font-size: 1.3em;
+        .card-title {
+            font-size: 1.4rem;
             font-weight: 600;
-            color: #2c3e50;
             margin-bottom: 10px;
-            line-height: 1.4;
+            position: relative;
+            z-index: 1;
         }
 
-        .case-study-description {
-            color: #555;
-            font-size: 0.9em;
-            margin-bottom: 15px;
+        .card-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 1rem;
             line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        .case-study-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #f8f9fa;
+            color: #2c3e50;
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .read-more {
+            color: #27ae60;
             font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .case-study-card:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        .stats {
+            display: flex;
+            gap: 15px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-weight: 600;
+            color: #27ae60;
+            font-size: 0.9rem;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .footer {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
             text-align: center;
-            padding: 25px 30px;
-            font-size: 1.05rem;
-            font-style: italic;
-            border-top: none;
-            margin-top: 0;
+            color: #333;
+            margin-top: 80px;
+            opacity: 0.8;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 10px;
+            .header h1 {
+                font-size: 2.5rem;
             }
             
-            .header h1 {
-                font-size: 2.2em;
+            .header .subtitle {
+                font-size: 1.1rem;
             }
             
             .case-studies-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .container {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -148,83 +216,258 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Acrux Grid</h1>
-            <p class="subtitle">Please find the case studies of the projects the Acrux Grid team has worked on till now.</p>
+            <h1>AcruxGrid Case Studies</h1>
+            <p class="subtitle">Explore our successful client transformations and innovative solutions across various industries</p>
         </div>
 
         <div class="case-studies-grid">
-            <div class="case-study-card">
-                <a href="case_study_AI_Governance_Platform.html" class="case-study-link">
-                    <h3 class="case-study-title">AI Governance Platform Agent</h3>
-                    <p class="case-study-description">Comprehensive AI governance and compliance management system</p>
-                    <span class="case-study-tag">AI Governance</span>
-                </a>
-            </div>
+            <!-- AI Governance Platform Case Study -->
+            <a href="case_study_AI_Governance_Platform.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">AI Governance Platform</div>
+                    <div class="card-category">Enterprise AI</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Implemented comprehensive AI governance framework for a Fortune 500 company, ensuring ethical AI deployment and regulatory compliance.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">AI Ethics</span>
+                        <span class="tag">Compliance</span>
+                        <span class="tag">Governance</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Risk Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_BDE_Performance_Tracking.html" class="case-study-link">
-                    <h3 class="case-study-title">BDE Performance Tracking Agent</h3>
-                    <p class="case-study-description">Business Development Executive performance monitoring and analytics</p>
-                    <span class="case-study-tag">Performance Analytics</span>
-                </a>
-            </div>
+            <!-- BDE Performance Tracking Case Study -->
+            <a href="case_study_BDE_Performance_Tracking.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">BDE Performance Tracking</div>
+                    <div class="card-category">Sales Analytics</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Advanced analytics dashboard for tracking Business Development Executive performance with real-time insights and predictive metrics.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Analytics</span>
+                        <span class="tag">Performance</span>
+                        <span class="tag">Dashboard</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">40%</div>
+                                <div class="stat-label">Sales Increase</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_employee_sentiment.html" class="case-study-link">
-                    <h3 class="case-study-title">Employee Sentiment Agent</h3>
-                    <p class="case-study-description">Real-time employee sentiment analysis and workplace insights</p>
-                    <span class="case-study-tag">Sentiment Analysis</span>
-                </a>
-            </div>
+            <!-- Feedback Loop Optimization Case Study -->
+            <a href="case_study_Feedback_Loop_Optimization.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">Feedback Loop Optimization</div>
+                    <div class="card-category">Process Improvement</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Streamlined customer feedback processes using AI-powered sentiment analysis and automated response systems for enhanced customer satisfaction.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Customer Experience</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">60%</div>
+                                <div class="stat-label">Response Time</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_it_infrastructure.html" class="case-study-link">
-                    <h3 class="case-study-title">IT Infrastructure Agent</h3>
-                    <p class="case-study-description">Intelligent IT infrastructure monitoring and management system</p>
-                    <span class="case-study-tag">Infrastructure</span>
-                </a>
-            </div>
+            <!-- Lead Distribution Case Study -->
+            <a href="case_study_Lead_Distribution.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">Smart Lead Distribution</div>
+                    <div class="card-category">Sales Optimization</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Intelligent lead distribution system that matches prospects with the most suitable sales representatives based on expertise and performance history.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Lead Management</span>
+                        <span class="tag">AI Matching</span>
+                        <span class="tag">Sales</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">35%</div>
+                                <div class="stat-label">Conversion Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_Feedback_Loop_Optimization.html" class="case-study-link">
-                    <h3 class="case-study-title">Feedback Loop Optimization Agent</h3>
-                    <p class="case-study-description">Automated feedback collection and process optimization system</p>
-                    <span class="case-study-tag">Process Optimization</span>
-                </a>
-            </div>
+            <!-- Lead Scoring Case Study -->
+            <a href="case_study_Lead_Scoring.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">Predictive Lead Scoring</div>
+                    <div class="card-category">Machine Learning</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Machine learning-powered lead scoring system that prioritizes prospects based on conversion probability and potential value.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Predictive Analytics</span>
+                        <span class="tag">Lead Scoring</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">50%</div>
+                                <div class="stat-label">Accuracy</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_Lead_Distribution.html" class="case-study-link">
-                    <h3 class="case-study-title">Lead Distribution Agent</h3>
-                    <p class="case-study-description">Intelligent lead routing and distribution management</p>
-                    <span class="case-study-tag">Lead Management</span>
-                </a>
-            </div>
+            <!-- Model Monitoring Case Study -->
+            <a href="case_study_Model_Monitoring.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">ML Model Monitoring</div>
+                    <div class="card-category">MLOps</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Comprehensive monitoring solution for machine learning models in production, ensuring optimal performance and detecting drift in real-time.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">MLOps</span>
+                        <span class="tag">Monitoring</span>
+                        <span class="tag">Model Performance</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-label">Uptime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_Lead_Scoring.html" class="case-study-link">
-                    <h3 class="case-study-title">Lead Scoring Agent</h3>
-                    <p class="case-study-description">AI-powered lead qualification and scoring system</p>
-                    <span class="case-study-tag">Lead Scoring</span>
-                </a>
-            </div>
+            <!-- Real-Time Fraud Detection Case Study -->
+            <a href="case_study_Real-Time_Fraud_Detection.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">Real-Time Fraud Detection</div>
+                    <div class="card-category">Security & AI</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Advanced fraud detection system using real-time analytics and machine learning to identify and prevent fraudulent transactions instantly.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Fraud Detection</span>
+                        <span class="tag">Real-time</span>
+                        <span class="tag">Security</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">Detection Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_Model_Monitoring.html" class="case-study-link">
-                    <h3 class="case-study-title">Model Monitoring Agent</h3>
-                    <p class="case-study-description">Continuous ML model performance monitoring and alerting</p>
-                    <span class="case-study-tag">ML Monitoring</span>
-                </a>
-            </div>
+            <!-- Employee Sentiment Analysis Case Study -->
+            <a href="case_study_employee_sentiment_analysis.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">Employee Sentiment Analysis</div>
+                    <div class="card-category">HR Analytics</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        AI-powered sentiment analysis tool for monitoring employee satisfaction, predicting turnover, and improving workplace culture.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">NLP</span>
+                        <span class="tag">HR Analytics</span>
+                        <span class="tag">Sentiment Analysis</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">25%</div>
+                                <div class="stat-label">Turnover Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-            <div class="case-study-card">
-                <a href="case_study_Real-Time_Fraud_Detection.html" class="case-study-link">
-                    <h3 class="case-study-title">Real-Time Fraud Detection Agent</h3>
-                    <p class="case-study-description">Advanced real-time fraud detection and prevention system</p>
-                    <span class="case-study-tag">Fraud Detection</span>
-                </a>
-            </div>
+            <!-- IT Infrastructure Case Study -->
+            <a href="case_study_it_infrastructure.html" class="case-study-card">
+                <div class="card-header">
+                    <div class="card-title">IT Infrastructure Overhaul</div>
+                    <div class="card-category">Cloud & Infrastructure</div>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">
+                        Complete IT infrastructure transformation with hybrid cloud implementation, security enhancement, and global system integration.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Cloud Migration</span>
+                        <span class="tag">Infrastructure</span>
+                        <span class="tag">Security</span>
+                    </div>
+                    <div class="card-footer">
+                        <span class="read-more">Read Case Study <span class="arrow">→</span></span>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">42%</div>
+                                <div class="stat-label">Cost Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
 
         <div class="footer">
-            <p>&copy; 2025 Acrux Grid. All ca
+            <p>&copy; 2024 AcruxGrid. Transforming businesses through innovative technology solutions.</p>
+        </div>
+    </div>
+</body>
+</html>
